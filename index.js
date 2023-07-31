@@ -1,6 +1,15 @@
+let carrito = [];
+const productos = [
+    {nombre: "Faja", precio: "200"},
+{ nombre: "Tobillera", precio: "300"},
+{nombre: "Rodillera", precio: "500"},
+{nombre: "Muslera", precio: "500"},
+];
+
+
 let continuar = true;
 while (continuar){
-    let opciones = parseInt(prompt("Bienvenidos a AGNovedades\n Por favor ingrese una opcion:\n 1.Conocer medios de Pagos\n 2.Medios de envios\n 3.Tipos de Facturas\n 4.Calcular Precio final de compra\n 5.Salir"));
+    let opciones = parseInt(prompt("Bienvenidos a AGNovedades\n Por favor ingrese una opcion:\n 1.Conocer medios de Pagos\n 2.Medios de envios\n 3.Tipos de Facturas\n 4.Calcular Precio final de compra\n 5.Lista de Productos\n 6.Salir"));
     switch (opciones){
         case 1:
             alert("Los medios de pagos disponibles:\n 1. Mercado Pago\n 2. Tarjeta de Credito\n 3. Tarjeta de Debito");
@@ -20,6 +29,13 @@ while (continuar){
             alert("El precio total de su producto es " + "$" + precioFinal + "\n El precio final contiene iva y un precio estandar de costo de envio de $500" );
             break;
         case 5:
+            let listadoProductos = "Listado de productos:\n";
+      for (let i = 0; i < productos.length; i++) {
+        listadoProductos += `${i + 1}. ${productos[i].nombre} - $${productos[i].precio}\n`;
+      }
+      alert(listadoProductos);
+            break;
+        case 6:
             continuar = false;
             break;
         default:
