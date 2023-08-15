@@ -27,6 +27,7 @@ const restarContador = (index) => {
   }
 }
 
+
 // Funcion para aregra productos al carrito
 const agregarProducto = (index) => {
   productos[index].cantidad = productos[index].contador;
@@ -40,10 +41,16 @@ if (productos[index].contador === 0) {
 }
 // Agregamos el producto al carrito 
 carrito.push(productos[index]);
+
+
 //Guardamos el carrito en el LocalStorage
 localStorage.setItem("carrito", JSON.stringify(carrito));
 // descontamos la cantidad del carrito al Stock 
 productos[index].stock -= productos[index].contador;
+//Reseteamos el contador 
+productos[index].contador = 0;
+
+
 mostrarProductos();
 }
 
