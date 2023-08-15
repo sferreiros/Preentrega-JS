@@ -25,10 +25,20 @@ const mostrarProductos = () => {
           <p>Stock: ${producto.stock}</p> 
           `;
         productosElemento.appendChild(productoBox);
+
+        let btnSumar = document.createElement("button");
+        btnSumar.innerHTML = "+";
+        btnSumar.classList.add ("btn","btn-sm","btn-secondary");
+        productoBox.appendChild(btnSumar);
+
+        let btnResta = document.createElement("button");
+        btnResta.innerHTML = "-";
+        btnResta.classList.add ("btn","btn-sm","btn-secondary");
+        productoBox.appendChild(btnResta);
       
         let btnAgregar = document.createElement("button");
         btnAgregar.innerHTML = "Agregar";
-        btnAgregar.classList.add ("ms-3", "btn", "btn-primary")
+        btnAgregar.classList.add ("ms-3", "btn", "btn-primary","d-grid" ,"gap-2")
         productoBox.appendChild(btnAgregar);
         
         btnAgregar.onclick = () => agregarProducto(index);
