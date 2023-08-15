@@ -7,12 +7,7 @@ let productos = [
     {nombre: "Muslera", precio: "500", stock: 20},
 ];
 
-let carrito;
-
-
-if(localStorage.getItem("carrito") === null){
-    carrito = [];
-} else {localStorage.getItem("carrito");}
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 // Agregamos un contador a cada Producto 
 productos.forEach ((productos) => {
@@ -20,17 +15,36 @@ productos.forEach ((productos) => {
 
 // Funcion para sumar en el contador 
 const sumarContador = (index) => {
-  if (productos[index].contador < productos[index].stock) {
      productos[index].contador++;
      mostrarProductos();
   }
-}
+
 // Funcion para restar en el contador 
 const restarContador = (index) => {
   if (productos[index].contador > 0) {
       productos[index].contador--;
       mostrarProductos();
   }
+}
+
+// Funcion para aregra productos al carrito
+const agregarProducto = (index) => {
+  productos[index].cantidad = productos[index].contador;
+
+// Verificamos que el contador no sea mayor al Stock 
+if (productos[index].contador > productos[index].stock){
+  return alert(`No hay stock suficiente, el máximo del producto es ${productos[index].stock} disponible`)}
+// Validamos que el usuario agregue mínimo 1 producto
+if (productos[index].contador === 0) {
+  return alert("Debe agregar por lo menos 1 producto al carrito");
+}
+// Agregamos el producto al carrito 
+carrito.push(productos[index]);
+//Guardamos el carrito en el LocalStorage
+localStorage.setItem("carrito", JSON.stringify(carrito));
+// descontamos la cantidad del carrito al Stock 
+productos[index].stock -= productos[index].contador;
+mostrarProductos();
 }
 
 // Mostramos los Productos
@@ -42,7 +56,7 @@ const mostrarProductos = () => {
           <p>Nombre:${producto.nombre}</p>
           <p>Precio: ${producto.precio}</p> 
           <p>Stock: ${producto.stock}</p>
-          <p>Contador: ${producto.contador}</p> 
+          <p>Cantidad: ${producto.contador}</p> 
           `;
         productosElemento.appendChild(productoBox);
 
