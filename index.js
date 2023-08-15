@@ -1,47 +1,38 @@
-let carrito = [];
-const productos = [
-    {nombre: "Faja", precio: "200"},
-{ nombre: "Tobillera", precio: "300"},
-{nombre: "Rodillera", precio: "500"},
-{nombre: "Muslera", precio: "500"},
+let productosElemento = document.querySelector("#productos");
+
+let productos = [
+    {nombre: "Faja", precio: "200", stock: 5},
+    {nombre: "Tobillera", precio: "300", stock: 40},
+    {nombre: "Rodillera", precio: "500", stock: 10},
+    {nombre: "Muslera", precio: "500", stock: 20},
 ];
 
+let carrito;
 
-let continuar = true;
-while (continuar){
-    let opciones = parseInt(prompt("Bienvenidos a AGNovedades\n Por favor ingrese una opcion:\n 1.Conocer medios de Pagos\n 2.Medios de envios\n 3.Tipos de Facturas\n 4.Calcular Precio final de compra\n 5.Lista de Productos\n 6.Salir"));
-    switch (opciones){
-        case 1:
-            alert("Los medios de pagos disponibles:\n 1. Mercado Pago\n 2. Tarjeta de Credito\n 3. Tarjeta de Debito");
-            break;
-        case 2:
-            alert("Hacemos envios por moto-mensajeria expres y OCA");
-            break;
-        case 3:
-            alert("Hacemos facturas A y B\n *RECORDATORIO*\n Debe adjnutar los datos correspondientes en el caso de querer una Factura A"); 
-            break; 
-        case 4:
-            let cantidad = parseInt(prompt("Ingrese cantidad del producto")); 
-            let precio = parseInt(prompt("Ingrese precio del producto"));
-            let iva = 1.21;
-            let costoEnvio = 500;
-            let precioFinal = (cantidad * precio * iva) + costoEnvio;
-            alert("El precio total de su producto es " + "$" + precioFinal + "\n El precio final contiene iva y un precio estandar de costo de envio de $500" );
-            break;
-        case 5:
-            let listadoProductos = "Listado de productos:\n";
-      for (let i = 0; i < productos.length; i++) {
-        listadoProductos += `${i + 1}. ${productos[i].nombre} - $${productos[i].precio}\n`;
-      }
-      alert(listadoProductos);
-            break;
-        case 6:
-            continuar = false;
-            break;
-        default:
-            alert("Opcion invalida por favor ingrese una opcion correcta");
-            break;     
-    }
+
+if(localStorage.getItem("carrito") === null){
+    carrito = [];
+} else {localStorage.getItem("carrito");}
+
+// Mostramos los Productos
+const mostrarProductos = () => {
+    productosElemento.innerHTML = " ";
+    productos.forEach((producto, index) => {
+        let productoBox = document.createElement("div");
+        productoBox.innerHTML = `
+          <p>Nombre:${producto.nombre}</p>
+          <p>Precio: ${producto.precio}</p> 
+          <p>Stock: ${producto.stock}</p> 
+          `;
+        productosElemento.appendChild(productoBox);
+      
+        let btnAgregar = document.createElement("button");
+        btnAgregar.innerHTML = "Agregar";
+        btnAgregar.classList.add ("ms-3", "btn", "btn-primary")
+        productoBox.appendChild(btnAgregar);
+        
+        btnAgregar.onclick = () => agregarProducto(index);
+      });
 }
 
-alert("Gracias por su consulta")
+mostrarProductos();
