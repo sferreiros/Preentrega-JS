@@ -1,4 +1,5 @@
-let productosElemento = document.querySelector("#productos");
+const  productosElemento = document.querySelector("#productos");
+const carritoElemento = document.querySelector("#carrito");
 
 let productos = [
     {nombre: "Faja", precio: "200", stock: 5},
@@ -52,6 +53,7 @@ productos[index].contador = 0;
 
 
 mostrarProductos();
+mostrarCarrito();
 }
 
 // Mostramos los Productos
@@ -88,5 +90,25 @@ const mostrarProductos = () => {
       });
 }
 
+// Mostramos el carrito
+const mostrarCarrito = () => {
+  carritoElemento.innerHTML = " ";
 
+  carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  
+  carrito.forEach((producto) => {
+    let productoBox = document.createElement("div");
+    productoBox.innerHTML = `
+    <p>Nombre:${producto.nombre}</p>
+    <p>Precio: ${producto.precio}</p> 
+    <p>Cantidad: ${producto.cantidad}</p> 
+    <p>Subtotal: ${producto.precio * producto.cantidad}</p> 
+    <p>-------------------------------------------</p> 
+    `;
+    carritoElemento.appendChild(productoBox);
+  });
+};
+
+mostrarCarrito();
 mostrarProductos();
+
