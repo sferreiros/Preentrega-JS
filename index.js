@@ -210,9 +210,27 @@ const totalCarrito = () => {
         carritoFoot.appendChild(productoBox); 
         const btnVaciar = document.getElementById(`vaciar-carrito`);
 btnVaciar.addEventListener (`click`, () => {
-    localStorage.removeItem("carrito");
-    mostrarCarrito();
-    totalCarrito ();   
+    swal.fire ({
+        titleText: `¿Esta seguro que desea vaciar el carrito de comrpras?`,
+        icon: "question",
+        confirmButtonText:"Aceptar",
+        showCancelButton: true,
+    }) .then ((resp) => {
+        if (resp.isConfirmed) {
+            localStorage.removeItem("carrito");
+            swal.fire ({
+                title: "Eliminado",
+                titleText: `El carrito se ha vaciado correctamente`,
+                icon: "success",
+                confirmButtonText: "Aceptar",
+            }).then (() => {
+                mostrarCarrito();
+                totalCarrito ();  
+            })
+        }
+    })
+    
+     
 
 });  
 
