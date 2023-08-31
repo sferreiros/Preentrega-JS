@@ -145,8 +145,28 @@ const restarCantidad = (e) => {
         carrito[index].cantidad--;
         
     } else {
-        carrito.splice(index, 1);
-    }
+        Swal.fire({
+            title: "Eliminiar",
+            titleText: `¿Esta seguro que desea eliminar el producto ${productos.nombre}`,
+            icon: "question",
+            confirmButtonText:"Aceptar",
+            showCancelButton: true,
+        }).then ((resp) => {
+            if (resp.isConfirmed) {
+                carrito.splice(index, 1);
+                swal.fire ({
+                    title: "Producto Eliminado",
+                    icon: "success",
+                    confirmButtonText: "Aceptar",
+                }).then (() => {
+                    actualizarCarrito();
+                totalCarrito ();
+                })
+            };
+
+        });
+        
+    };
     actualizarCarrito();
     totalCarrito ();
 };
