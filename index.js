@@ -77,9 +77,18 @@ const mostrarProductos = () => {
 // Agregamos producto al carrito
 const agregarProducto = (e) => {
     const index = event.target.getAttribute('data-index');
-    productos[index].cantidad = 1;
+    const productoSeleccionado = productos[index];
+    productoSeleccionado.cantidad = 1;
 
-    carrito.push(productos[index]);
+    carrito.push(productoSeleccionado);
+    
+    Swal.fire ({
+        title: "Agregado",
+        titleText: `Prodcuto ${productoSeleccionado.nombre} agregado al carrito`,
+        icon: "success",
+        confirmButtonText: "Ok",        
+    });
+
     localStorage.setItem("carrito",JSON.stringify(carrito));
     mostrarCarrito();
     totalCarrito ();
