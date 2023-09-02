@@ -1,0 +1,8 @@
+[
+    {"id":"1","nombre":"Muñequera Turmalina Magnetica Artrosis Artritis","precio": "7190","imagen":"./img/Muñequera Magnetica.jpeg"},
+    {"id":"2","nombre":"Rodillera Ortopedica Neoprene Magnetica","precio":"11800","imagen":"./img/Rodillera Ortopedica Neoprene Magnetica.jpeg"},
+    {"id":"3","nombre":"Hombrera Tendinitis Magnetica Hombre Manguito","precio":"11900","imagen":"./img/Hombrera Magnetica.jpeg"},  
+    {"id":"4","nombre":"Tobillera Lesión Artrosis Artritis Magnetica","precio":"7990","imagen":"./img/Tobillera Magnetica.jpeg"},
+    {"id":"5","nombre":"Corrector Postural Espalda Clavicula Premiun","precio":"6190","imagen":"./img/Corrector Postural.jpeg"},
+    {"id":"6","nombre":"Faja Termica Lumbar Neoprene Bellenada","precio":"15900","imagen": "./img/Faja Termica Lumbar.jpeg"}
+]
