@@ -114,23 +114,23 @@ productoBox.innerHTML =`
 <form class="row g-3">
           <div class="col-md-6">
             <label for="inputEmail4" class="form-label">Apellido</label>
-            <input type="email" class="form-control" id="inputApellido">
+            <input type="text" class="form-control" id="inputApellido">
           </div>
           <div class="col-md-6">
             <label for="inputPassword4" class="form-label">Nombre</label>
-            <input type="password" class="form-control" id="inputNombre">
+            <input type="text" class="form-control" id="inputNombre">
           </div>
           <div class="col-12">
-            <label for="inputAddress" class="form-label">Direccion de Entrega</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Calle Falsa 123">
+            <label  class="form-label">Direccion de Entrega</label>
+            <input type="text" class="form-control" id="inputDireccion" placeholder="Calle Falsa 123">
           </div>
           <div class="col-12">
             <label for="inputAddress2" class="form-label">Piso - Departamento</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="4 B">
+            <input type="text" class="form-control" id="inputPiso" placeholder="4 B">
           </div>
           <div class="col-12">
             <label for="inputAddress2" class="form-label">DNI</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="11111111">
+            <input type="text" class="form-control" id="inputDNI" placeholder="11111111">
           </div>
           <div class="col-md-6">
             <label for="inputCity" class="form-label">Ciudad</label>
@@ -219,11 +219,43 @@ productoBox.innerHTML =`
             </div>
           </div>                    
           <div class="col-12">
-            <button type="submit" class="btn btn-primary">Comprar</button>
+            <button type="submit" class="btn btn-primary btnComprar" id="btn-Comprar">Comprar</button>
           </div>
         </form>
 `
 finalCarrito.appendChild(productoBox); 
+
+// agregamos evento al btn comprar, para finalizar la compra 
+
+const btnComprar = document.querySelector("#btn-Comprar");
+btnComprar.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevenir la acción por defecto del formulario
+
+    const inputApellido = document.querySelector('#inputApellido').value;
+    const inputNombre = document.querySelector('#inputNombre').value;
+    const inputDireccion = document.querySelector('#inputDireccion').value;
+
+    if (inputApellido && inputNombre && inputDireccion) { // Verificar si los campos contienen valores
+        swal.fire({
+            title: `${inputApellido} ${inputNombre}`,
+            text: `Muchas gracias por su compra, su pedido estará llegando a la dirección ${inputDireccion} en aproximadamente 2hs`,
+            icon: "info",
+            confirmButtonText: "Aceptar",        
+        });
+    } else {
+        // Mostrar un mensaje de error si algún campo está vacío
+        swal.fire({
+            title: "Error",
+            text: "Por favor, complete todos los campos antes de comprar.",
+            icon: "error",
+            confirmButtonText: "Aceptar",
+        });
+    }
+});
+
+
+
+
 
 
 
