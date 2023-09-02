@@ -1,0 +1,8 @@
+.estiloTarjeta input{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #21232a;
+    background: lightgray;
+    margin-bottom: 1rem;
+}

@@ -1,3 +1,7 @@
+//const finalCarrito = document.querySelector("#finalCarrito");
+
+
+
 //Mostrar el carrito
 const mostrarCarrito = () => {
     carritoCompras.innerHTML = "";
@@ -99,10 +103,128 @@ btnVaciar.addEventListener (`click`, () => {
 
 });  
 
-        
-    
 };
 
 
 mostrarCarrito();
-totalCarrito ();    
+totalCarrito ();  
+// Mostramos los datos del comprador 
+let productoBox = document.createElement ("div")
+productoBox.innerHTML =`
+<form class="row g-3">
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Apellido</label>
+            <input type="email" class="form-control" id="inputApellido">
+          </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Nombre</label>
+            <input type="password" class="form-control" id="inputNombre">
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">Direccion de Entrega</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="Calle Falsa 123">
+          </div>
+          <div class="col-12">
+            <label for="inputAddress2" class="form-label">Piso - Departamento</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="4 B">
+          </div>
+          <div class="col-12">
+            <label for="inputAddress2" class="form-label">DNI</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="11111111">
+          </div>
+          <div class="col-md-6">
+            <label for="inputCity" class="form-label">Ciudad</label>
+            <input type="text" class="form-control" id="inputCity">
+          </div>
+          <div class="col-md-4">
+            <label for="inputState" class="form-label">Localidad</label>
+            <select id="inputState" class="form-select">
+              <option selected>Ciudad Autonoma de Buenos Aires</option>
+              <option>Mendoza</option>
+              <option>Catamarca</option>
+              <option>La Rioja</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <label for="inputZip" class="form-label">Codigo Postal</label>
+            <input type="text" class="form-control" id="inputZip">
+          </div>
+          <div>
+            <h1>Datos de la Tarjeta</h1>
+          </div>
+          <div class="d-flex justify-content-between estiloTarjeta">
+            <div class="card text-bg-light mb-3" style="max-width: 28rem;">
+              <div class="card-header">
+                <div class="d-flex justify-content-between">
+                  <h5>Tarjeta de Debito</h5>
+                  <div>
+                    <span class="material-symbols-outlined">
+                      credit_card
+                      </span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h6 class="card-title">
+                  <label>Número de Tarjeta</label><br>
+                  <input type="text" id="numeroTarjeta">
+                </h6>
+                <div class="card-text">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <label>Titular de la Tarjeta</label>
+                      <input type="text">
+                    </div>
+                    <div>
+                      <label>Fecha Vto</label>
+                      <input type="text">
+                    </div>                    
+                  </div>                  
+                  <label >CVC</label><br>
+                  <input type="text">
+                </div>
+              </div>
+            </div>
+            <div class="card text-bg-light mb-3" style="max-width: 28rem;">
+              <div class="card-header">
+                <div class="d-flex justify-content-between">
+                  <h5>Tarjeta de Credito</h5>
+                  <div>
+                    <span class="material-symbols-outlined">
+                      credit_card
+                      </span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h6 class="card-title">
+                  <label>Numero de Tarjeta</label><br>
+                  <input type="text" id="numeroTarjeta">
+                </h6>
+                <div class="card-text">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <label>Titular de la Tarjeta</label>
+                      <input type="text">
+                    </div>
+                    <div>
+                      <label>Fecha Vto</label>
+                      <input type="text">
+                    </div>                    
+                  </div>                  
+                  <label >CVC</label><br>
+                  <input type="text">
+                </div>
+              </div>
+            </div>
+          </div>                    
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Comprar</button>
+          </div>
+        </form>
+`
+finalCarrito.appendChild(productoBox); 
+
+
+
+  
