@@ -147,7 +147,7 @@ const restarCantidad = (e) => {
     } else {
         Swal.fire({
             title: "Eliminiar",
-            titleText: `¿Esta seguro que desea eliminar el producto ${productos.nombre}`,
+            titleText: `¿Esta seguro que desea eliminar el producto ${productos[index].nombre}`,
             icon: "question",
             confirmButtonText:"Aceptar",
             showCancelButton: true,
